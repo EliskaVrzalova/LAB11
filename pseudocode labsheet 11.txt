@@ -1,0 +1,138 @@
+// eliska vrzalova
+// labsheet 11
+
+// question 1
+// 07/02/2024
+
+main()
+start function
+
+num1 = 0;
+num2 = 0;
+
+display message "Please enter the first number:";
+input num1;
+display message "Please enter the second number:";
+input num2;
+display message "First number value before function call:" + num1;
+display message "Second number value before function call:" + num2;
+
+triple_it(num1, num2);
+display message "First number value after function call:" + num1;
+display message "Second number value after function call:" + num2;
+
+end function
+
+triple_it(&t_num1, &t_num2)
+// takes the addresses of two floats and triples the value of both floats. 
+start function
+t_num1 = t_num1 * 3;
+t_num2 = t_num2 *3;
+end function
+--------------------------------------------------------------------------------------------
+
+// question 2
+// 07/02/2024
+
+main()
+start function
+
+number = 0;
+display message "Enter a number:";
+input number
+display message "The value of number before function call:" + number;
+
+makeNegative(number);
+display message "The value of number after function call:" + number;
+end function
+
+makeNegative(&t_number)
+// takes the address of one integer number and changes the number to a negative number. 
+// If the number is already negative, your function does not need to change the number. 
+start function
+
+if(t_number > 0)
+	t_number = - t_number;
+end function
+----------------------------------------------------------------------------------------------------
+
+// question 3
+// 07/02/2024
+
+main()
+start function
+
+array[] = { 9, 3, 4, 8, 5, 2};
+MAX_ITEMS = 6;
+lowestValue = 0;
+
+lowestValue = findLowest(array, MAX_ITEMS);
+display message "The lowest value in the array is:" + lowestValue
+
+end function
+
+findLowest(array[], MAX_ITEMS)
+// finds the lowest element in the integer array that is passed as an argument to it. 
+start function
+
+count = 0;
+lowestValue = array[0];
+for(count; count < MAX_ITEMS; count++)
+	if(array[count] < lowest)
+		lowestValue = array[count];
+	end if
+end for
+return lowestValue;
+end function
+-------------------------------------------------------------------------------------------------------------
+
+// question 4
+// 07/02/2024
+
+MAX_NUMS = 5; // size of the array declared as global variable
+main()
+start function
+
+averageArray [MAX_NUMS] = { 8, 15, 9, 3, 17};
+average = 0;
+
+average = calAverage(averageArray);
+display message "The average of elements in the array is:" + average;
+
+end function
+
+calAverage(t_averageArray[])
+// calculate the average of the elements of the double array that is passed as an argument to it. The function should return the average. 
+start function
+
+average = 0;
+sum = 0;
+for(count = 0; count < MAX_NUMS; count++)
+	sum = sum + t_averageArray[count];
+end for
+average = sum/MAX_NUMS;
+return average;
+end function
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+// question 5
+// 07/02/2024
+
+ARRAY_SIZE = 7;
+main()
+start function
+
+reverse[ARRAY_SIZE] = { 5, 15, 65.9, 12.5, 8.65, 3, 9.8};
+for(count = 0; count < ARRAY_SIZE; count++)
+	dipslay message + reverse[count];
+end for
+
+reverseArray(reverse);
+end function
+
+reverseArray()
+start function
+
+reverseValues = reverseArray[6];
+for(count = 0; count < ARRAY_SIZE; count++)
+	reverseArray[count] = reverseValues;
