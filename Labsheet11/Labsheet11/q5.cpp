@@ -5,7 +5,7 @@
 // This function then physically reverses the contents of the double array. Both original and reversed array is displayed
 // any known bugs: none
 
-void switchArray(double t_toReverse);
+void switchArray(double t_toReverse[]);
 const int ARRAY_SIZE = 7;
 #include <iostream>
 
@@ -15,7 +15,7 @@ int main()
 	// array displayed beforen its reversed
 	for (int count = 0; count < ARRAY_SIZE; count++)
 	{
-		std::cout << toReverse[count] << " ";
+		std::cout << toReverse[count] << " " << std::endl;
 	}
 
 	switchArray(toReverse);
@@ -36,6 +36,7 @@ void switchArray(double t_toReverse[])
 		temporary[count] = t_toReverse[index];
 		index++;
 	}
+	count = 0;
 
 	for (index = 0; index < ARRAY_SIZE; index++)
 	{

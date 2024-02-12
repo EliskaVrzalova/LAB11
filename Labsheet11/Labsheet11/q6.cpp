@@ -10,8 +10,8 @@
 
 const int MAX_PLAYERS = 10; // global data
 void initializeArrays(std::string t_nameArray[], int t_scoreArray[]);
-std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int t_scoresArray, int t_noOfPlayers);
-std::string findPlayerScore(std::string t_aScore, std::string t_playerNames[], int t_scoresArray, int t_noOfPlayers);
+std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
+std::string findPlayerScore(int t_aScore, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
 
 int main6()
 {
@@ -55,7 +55,7 @@ void initializeArrays(std::string t_nameArray[], int t_scoreArray[])
 	t_scoreArray[7] = 65;
 }
 
-std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int t_scoresArray, int t_noOfPlayers)
+std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers)
 // The function should find the first player in the array which has the same name as aName. If there are more than one player with the same name in the array, it should only return details about the first player.
 // The function should return a string stating what score that player has.
 //  If no player is found with that name, the function should return a string “No player found with that name”.
@@ -63,6 +63,7 @@ std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int
 	std::string message = "Player not found in the array";
 	int count = 0;
 	bool playerFound = false;
+	int score = 0;
 	for (; count < t_noOfPlayers; count++)
 	{
 		if (t_playerNames[count] == t_aName)
@@ -78,7 +79,7 @@ std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int
 	return message;
 }
 
-std::string findPlayerScore(std::string t_aScore, std::string t_playerNames[], int t_scoresArray, int t_noOfPlayers)
+std::string findPlayerScore(int t_aScore, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers)
 // The function then searches for the last occurrence of that particular score in the player scores array.
 // If it finds it, it should return the name of the player with that score in the array. If it is not in the array the function should return the empty string. 
 {
