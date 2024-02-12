@@ -122,17 +122,89 @@ ARRAY_SIZE = 7;
 main()
 start function
 
-reverse[ARRAY_SIZE] = { 5, 15, 65.9, 12.5, 8.65, 3, 9.8};
+toReverse[ARRAY_SIZE] = { 5, 15, 65.9, 12.5, 8.65, 3, 9.8};
 for(count = 0; count < ARRAY_SIZE; count++)
 	dipslay message + reverse[count];
 end for
 
-reverseArray(reverse);
+temporary[ARRAY_SIZE];
+switchArray(toReverse, temporary, ARRAY_SIZE);
+
 end function
 
-reverseArray()
+switchArray( t_toReverse[], t_temporary[], t_ARRAY_SIZE)
 start function
 
-reverseValues = reverseArray[6];
-for(count = 0; count < ARRAY_SIZE; count++)
-	reverseArray[count] = reverseValues;
+count = 0;
+index = 0;
+for(count = ARRAY_SIZE - 1; count >= 0; count--)
+{
+	t_temporary[count] = t_toReverse[index];
+}
+
+for(index = 0; index < ARRAY_SIZE; index++; count--)
+	{
+		t_toReverse[index] =  t_temporary[count];
+		display message + t_toReverse[index];
+	}
+end function
+	
+	
+	
+
+---------------------------------------------------------------------------------------------------------	
+ MAX_PLAYERS = 10; // global data
+
+int main()
+{
+playerNames[MAX_PLAYERS]= ""; // local data
+playerScores[MAX_PLAYERS];
+noOfPlayers = 8; // the number of active players
+
+aName = "Ki";
+message= "";
+initializeArrays(playerNames, playerScores); // function call
+}
+message = findPlayerName( aName, playerNames, playerScores, noOfPlayers);
+display message + message;
+
+initializeArrays(t_nameArray[],t_scoreArray[])
+// Initialize the two arrays
+{
+	t_nameArray[0] = "David";
+	t_nameArray[1] = "Jake";
+	t_nameArray[2] = "Aoife";
+	t_nameArray[3] = "Ki";
+	t_nameArray[4] = "Joe";
+	t_nameArray[5] = "Ray";
+	t_nameArray[6] = "Dave";
+	t_nameArray[7] = "Sue";
+
+	t_scoreArray[0] = 75;
+	t_scoreArray[1] = 65;
+	t_scoreArray[2] = 25;
+	t_scoreArray[3] = 35;
+	t_scoreArray[4] = 40;
+	t_scoreArray[5] = 80;
+	t_scoreArray[6] = 55;
+	t_scoreArray[7] = 65;
+}
+
+
+findPlayerName(t_aName, t_playerNames, t_scoresArray, t_noOfPlayers) 
+// The function should find the first player in the array which has the same name as aName. If there are more than one player with the same name in the array, it should only return details about the first player.
+// The function should return a string stating what score that player has.
+//  If no player is found with that name, the function should return a string “No player found with that name”.
+start function
+message = "Player not found in the array";
+playerFound = false;
+count = 0; 
+for(count = 0; count < noOfPlayers; count++)
+	if(t_playerNames[count] == t_aName)
+		playerFound = true;
+		break;
+end for
+if(playerFound == true)
+		message = "Player" + t_playerNames[count] + ", score: " + to_string(t_scoreArray[count];
+en if
+return message;

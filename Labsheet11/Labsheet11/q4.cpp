@@ -10,7 +10,7 @@
 double calAverage(double t_averageArray[]);
 const int ARRAY_SIZE = 5; // size of the array declared as global constant variable
 
-int main()
+int main4()
 {
 	double averageArray[ARRAY_SIZE] = { 8, 15, 9, 3, 17 };
 	double average = 0.0;
