@@ -132,7 +132,7 @@
     <ClCompile Include="q3.cpp" />
     <ClCompile Include="q4.cpp" />
     <ClCompile Include="q5.cpp" />
-    <ClCompile Include="q6.cpp" />
+    <ClCompile Include="q6 q7 q8 q9.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,7 +9,7 @@ void switchArray(double t_toReverse[]);
 const int ARRAY_SIZE = 7;
 #include <iostream>
 
-int main()
+int main5()
 {
 	double toReverse[ARRAY_SIZE] = { 5, 15, 65.9, 12.5, 8.65, 3, 9.8 };
 	// array displayed beforen its reversed

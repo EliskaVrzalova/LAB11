@@ -12,22 +12,33 @@ const int MAX_PLAYERS = 10; // global data
 void initializeArrays(std::string t_nameArray[], int t_scoreArray[]);
 std::string findPlayerName(std::string t_aName, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
 std::string findPlayerScore(int t_aScore, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
+std::string findScoreDetails(int t_minScore, int t_maxScore, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
+int changePlayerScore(std::string t_aName, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers);
 
-int main6()
+int main()
 {
 	std::string playerNames[MAX_PLAYERS]; // local array, names of players
 	int playerScores[MAX_PLAYERS]; // local array, scores of players
 	int noOfPlayers = 8; // the number of active players
 
-	std::string aName = "Ki";
+	std::string aName = "Sue";
 	int aScore = 40;
+	int minScore = 50;
+	int maxScore = 75;
+	int indexPos = 0;
 	std::string messageName = "";
 	std::string messageScore = "";
+	std::string messageRange = "";
 	initializeArrays(playerNames, playerScores);
 	messageName = findPlayerName(aName, playerNames, playerScores, noOfPlayers);
 	std::cout << messageName << std::endl;
 	messageScore = findPlayerScore(aScore, playerNames, playerScores, noOfPlayers);
 	std::cout << messageScore << std::endl;
+	messageRange = findScoreDetails(minScore, maxScore, playerNames, playerScores, noOfPlayers);
+	std::cout << messageRange << std::endl;
+	indexPos = changePlayerScore(aName, playerNames, playerScores, noOfPlayers);
+	std::cout << "The index position of the player " << aName << " whos score was updated is " << indexPos << std::endl;
+
 
 	system("Pause");
 	return 0;
@@ -100,4 +111,64 @@ std::string findPlayerScore(int t_aScore, std::string t_playerNames[], int t_sco
 		message = "The score of " + std::to_string(t_scoresArray[count]) + " is the core of player" + t_playerNames[count];
 	}
 	return message;
+}
+
+std::string findScoreDetails(int t_minScore, int t_maxScore, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers)
+// The function searches for all occurrences of players whose scores are within the minimum and maximum score range (inclusive). 
+// If there is more than one player within this range, the function returns the names of all players and their associated scores.
+// If there are no players with a score within this range, the function returns a string stating “No players in that range”.
+{
+	std::string message = "";
+	bool playersInRange = false;
+	int count = 0;
+
+	for (; count < t_noOfPlayers; count++)
+	{
+		if (t_scoresArray[count] >= t_minScore && t_scoresArray[count] <= t_maxScore)
+		{
+			message = message + "player " + t_playerNames[count] + ", score: " + std::to_string(t_scoresArray[count]);
+			playersInRange = true;
+		}
+	}
+	if (playersInRange == false)
+	{
+		message = "No players in that range";
+	}
+	return message;
+
+
+}
+
+int changePlayerScore(std::string t_aName, std::string t_playerNames[], int t_scoresArray[], int t_noOfPlayers)
+// This function asks the user what the players new score is.
+// It then finds that player in the array and update their score to the new score inputted by the user.
+// If there are more than one player with the same name in the array, it updates the last player in the array with that name.
+// The function returns the index position of the updated player. If the player is not in the array your function returns -1. 
+{
+	int indexPos = 0;
+	int newScore = 0;
+	int count = 0;
+	bool playerFound = false;
+
+	std::cout << "Enter the new score for player " << t_aName << std::endl;
+	std::cin >> newScore;
+
+	for(count = t_noOfPlayers - 1; count >= 0; count--)
+	{
+		if (t_playerNames[count] == t_aName)
+		{
+			t_scoresArray[count] = newScore;
+			indexPos = count;
+			playerFound = true;
+			break;
+		} // end if
+	} // end for
+	if (playerFound == true)
+	{
+		return indexPos;
+	}
+	else
+	{
+		return -1;
+	}
 }
